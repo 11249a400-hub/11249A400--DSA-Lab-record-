@@ -247,5 +247,193 @@ stack is underflow
 1
 
 RESULT:
-Thus, the program to implement Stack operations (Push, Pop, and Display) using an array was successfully executed and verified.
+Thus, the program to implement Stack operations (Push, Pop, and Display) using an array was successfully executed and verified
+
+EXPERIMENT 4
+REVERSE STRING USING STACK 
+
+AIM:
+To write a program that reverses a given string using the stack data structure.
+
+ALGORITHM:
+1. Start
+2. Initialize an empty stack.
+3. Input the string to be reversed.
+4. Push each character of the string onto the stack one by one.
+5. Pop each character from the stack and append it to a new string.
+Since the stack works on the LIFO (Last In, First Out) principle, popping characters will give the reversed order.
+6. Display the reversed string.
+7. Stop
+
+CODE:
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX 100
+
+char STACK[MAX];
+int TOP = -1;
+
+void push(char item) {
+print (" there are./.d elements in stack./n",top+1);
+for(int i=top; i>=0;i++)
+{
+    if (TOP == MAX - 1) {
+        printf("Stack is overflow\n");
+    } else {
+        TOP = TOP + 1;
+        STACK[TOP] = item;
+    }
+}
+
+char pop() {
+    if (TOP == -1) {
+        printf("Stack is underflow\n");
+        return '\0';
+    } else {
+        char item = STACK[TOP];
+        TOP = TOP - 1;
+        return item;
+    }
+}
+
+void display() {
+    if (TOP == -1) {
+        printf("Stack is empty\n");
+char pop()
+{
+char item;
+if(top==-1)
+{
+printf(" stack is inder flow/ empty/n")
+return\0:
+    } 
+else
+{
+       printf("There are %d elements in stack:\n", TOP + 1);
+        for (int i = TOP; i >= 0; i--) {
+            printf("%c\n", STACK[i]);
+        }
+    }
+}
+
+int main() {
+    char str[MAX];
+    printf("Enter a string: ");
+    gets(str);
+
+    int i;
+    for (i = 0; i < strlen(str); i++) {
+        push(str[i]);
+    }
+
+    printf("Reversed string: ");
+    while (TOP != -1) {
+        printf("%c", pop());
+    }
+    printf("\n");
+
+    return 0;
+}
+
+INPUT:
+Enter a string: HELLO
+
+OUTPUT:
+Reversed string: OLLEH
+
+RESULT:
+The program successfully reverses a given string using a stack by utilizing the LIFO principle.
+
+EXPERIMENT 5
+INFIX TO POST FIX 
+
+AIM:
+Convert a given arithmetic expression in infix notation (operators between operands, e.g. A + B * C) 
+into its equivalent postfix notation (operators after operands, e.g. A B C * +) so it can be evaluated easily by a stack-based evaluator.
+
+ALGORITHM:
+1. Initialize an empty stack S and an empty output string out.
+2. Scan the infix expression from left to right token by token (operand, operator, parenthesis).
+3. For each token:
+Operand (variable/number): append it to out.
+Left parenthesis (: push it onto S.
+Right parenthesis ): pop from S and append to out until you pop a ( (discard both parentheses).
+Operator (op):
+While S is not empty and the operator at the top of S has higher precedence OR same precedence and left-associative, and the top is not (, pop it and append to out.
+Push the current operator op onto S.
+4. After the input is fully read, pop any remaining operators from S and append to out.
+5. out is the final postfix expression.
+
+CODE:
+# Function to define precedence of operators
+def precedence(op):
+    if op == '+' or op == '-':
+        return 1
+    if op == '*' or op == '/':
+        return 2
+    if op == '^':
+        return 3
+    return 0
+
+# Function to check if character is operand
+def is_operand(ch):
+    return ch.isalnum()
+
+# Function to convert infix to postfix
+def infix_to_postfix(expression):
+    stack = []    # for operators
+    output = []   # for result
+
+    for ch in expression:
+        # If operand, add to output
+        if is_operand(ch):
+            output.append(ch)
+        # If '(', push to stack
+        elif ch == '(':
+            stack.append(ch)
+        # If ')', pop until '('
+        elif ch == ')':
+            while stack and stack[-1] != '(':
+                output.append(stack.pop())
+            stack.pop()  # Remove '('
+        # Operator
+        else:
+            while (stack and precedence(stack[-1]) >= precedence(ch)):
+                output.append(stack.pop())
+            stack.append(ch)
+
+    # Pop all remaining operators
+    while stack:
+        output.append(stack.pop())
+
+    return "".join(output)
+
+# ---- Main Program ----
+exp = input("Enter infix expression: ")
+print("Postfix expression:", infix_to_postfix(exp))
+
+INPUT:
+Enter infix expression: (A+B)*C-D^E^F
+
+OUTPUT:
+Postfix expression: AB+C*DEF^^-
+
+RESULT:
+Step 1: (A+B) → AB+
+Step 2: (AB+)*C → AB+C*
+Step 3: (AB+C*)-D^E^F → AB+C*DEF^^-
+Hence, the equivalent postfix expression for (A+B)*C-D^E^F is AB+C*DEF^^-.
+
+Experiment 6
+
+
+
+
+
+
+
+
+
 
